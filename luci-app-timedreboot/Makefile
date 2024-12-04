@@ -5,7 +5,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-timedreboot
 PKG_VERSION:=1.0
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 PKG_DATE:=20220920
 
 PKG_MAINTAINER:=kongfl888 <kongfl888@outlook.com>
@@ -42,7 +42,7 @@ define Package/$(PKG_NAME)/install
 	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci/
 
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	po2lmo ./po/zh-cn/timedreboot.po $(1)/usr/lib/lua/luci/i18n/timedreboot.zh-cn.lmo
+	po2lmo$(TOPDIR)/feeds/luci/zh-cn/timedreboot.po $(1)/usr/lib/lua/luci/i18n/timedreboot.zh-cn.lmo
 endef
 
 define Package/$(PKG_NAME)/postinst
@@ -55,7 +55,7 @@ endef
 define Package/$(PKG_NAME)/postrm
 #!/bin/sh
     sed -i '/dorboot/d' /etc/crontabs/root >/dev/null 2>&1 || echo ""
-    rm -rf /tmp/luci-modulecache/ >/dev/null 2>&1 || echo ""
+    rm -rf /tmp/luci-modulecac$(TOPDIR)/feeds/luci/dev/null 2>&1 || echo ""
     rm -f /tmp/luci-indexcache >/dev/null 2>&1 || echo ""
     exit 0
 endef

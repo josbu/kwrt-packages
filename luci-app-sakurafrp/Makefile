@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-sakurafrp
 PKG_VERSION=1.0.0
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 LUCI_TITLE:=LuCI support for SakuraFrp
 LUCI_DEPENDS:=+curl+wget+jsonc
@@ -31,7 +31,7 @@ define Package/luci-app-sakurafrp/conffiles
 endef
 
 define Build/Prepare
-	$(foreach po,$(wildcard ${CURDIR}/po/*.po), \
+	$(foreach po,$(wildcard ${CURDI$(TOPDIR)/feeds/luci/*.po), \
 		po2lmo $(po) $(PKG_BUILD_DIR)/$(patsubst %.po,%.lmo,$(notdir $(po)));)
 endef
 

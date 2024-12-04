@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-clash
 PKG_VERSION:=v1.8.0
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 PKG_MAINTAINER:=frainzy1477
 
 include $(INCLUDE_DIR)/package.mk
@@ -22,7 +22,7 @@ define Package/$(PKG_NAME)/description
 endef
 
 define Build/Prepare
-	po2lmo ${CURDIR}/po/zh-cn/clash.po ${CURDIR}/po/zh-cn/clash.zh-cn.lmo
+	po2lmo ${CURDI$(TOPDIR)/feeds/luci/zh-cn/clash.po ${CURDIR}/po/zh-cn/clash.zh-cn.lmo
 endef
 
 define Build/Configure
@@ -154,8 +154,8 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) ./root/usr/share/clash/dashboard/index.html $(1)/etc/clash/dashboard
 	$(INSTALL_BIN) ./root/usr/share/clash/dashboard/main.658aa6a6e3feec8f168b.css $(1)/etc/clash/dashboard
 	$(INSTALL_BIN) ./root/usr/share/clash/dashboard/img/ffac0fa1d89f15922b4594863b8b32e9.png $(1)/etc/clash/dashboard/img
-	$(INSTALL_BIN) ./root/usr/share/clash/dashboard/js/1.bundle.658aa6a6e3feec8f168b.min.js $(1)/etc/clash/dashboard/js
-	$(INSTALL_BIN) ./root/usr/share/clash/dashboard/js/bundle.658aa6a6e3feec8f168b.min.js $(1)/etc/clash/dashboard/js
+	$(INSTALL_BIN) ./root/usr/share/clash/dashboa$(TOPDIR)/feeds/luci/1.bundle.658aa6a6e3feec8f168b.min.js $(1)/etc/clash/dashboard/js
+	$(INSTALL_BIN) ./root/usr/share/clash/dashboa$(TOPDIR)/feeds/luci/bundle.658aa6a6e3feec8f168b.min.js $(1)/etc/clash/dashboard/js
 	$(INSTALL_BIN) ./root/usr/share/clash/yacd/* $(1)/usr/share/clash/yacd
 	
 	$(INSTALL_DATA) ./luasrc/clash.lua $(1)/usr/lib/lua/luci
@@ -169,7 +169,7 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DATA) ./luasrc/model/cbi/clash/logs/*.lua $(1)/usr/lib/lua/luci/model/cbi/clash/logs
 	$(INSTALL_DATA) ./luasrc/model/cbi/clash/update/*.lua $(1)/usr/lib/lua/luci/model/cbi/clash/update
 	$(INSTALL_DATA) ./luasrc/view/clash/* $(1)/usr/lib/lua/luci/view/clash
-	$(INSTALL_DATA) ./po/zh-cn/clash.zh-cn.lmo $(1)/usr/lib/lua/luci/i18n
+	$(INSTALL_DATA)$(TOPDIR)/feeds/luci/zh-cn/clash.zh-cn.lmo $(1)/usr/lib/lua/luci/i18n
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))

@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-nginx-pingos
 PKG_VERSION:=1.19.6
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PKG_SOURCE:=nginx-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://nginx.org/download/
@@ -92,7 +92,7 @@ define Package/$(PKG_NAME)/install
 	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci/
 	
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	po2lmo ./po/zh-cn/pingos.po $(1)/usr/lib/lua/luci/i18n/pingos.zh-cn.lmo
+	po2lmo$(TOPDIR)/feeds/luci/zh-cn/pingos.po $(1)/usr/lib/lua/luci/i18n/pingos.zh-cn.lmo
 	
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/nginx $(1)/usr/sbin/pingos

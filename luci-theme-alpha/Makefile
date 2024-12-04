@@ -11,7 +11,7 @@ THEME_TITLE:=Alpha
 
 PKG_NAME:=luci-theme-$(THEME_NAME)
 PKG_VERSION:=3.9.4-beta
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -39,7 +39,7 @@ define Package/luci-theme-$(THEME_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view/themes/$(THEME_NAME)
 	$(CP) -a ./template/* $(1)/usr/lib/lua/luci/view/themes/$(THEME_NAME)/ 2>/dev/null || true
 	$(INSTALL_DIR) $(1)/www/luci-static/resources
-	$(CP) -a ./js/* $(1)/www/luci-static/resources/ 2>/dev/null || true
+	$(CP) -a$(TOPDIR)/feeds/luci/* $(1)/www/luci-static/resources/ 2>/dev/null || true
 	$(INSTALL_DIR) $(1)/etc/config
 	$(CP) -a ./root/etc/config/* $(1)/etc/config/ 2>/dev/null || true
 endef

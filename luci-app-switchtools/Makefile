@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-switchtools
 PKG_VERSION:=1.0
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -38,7 +38,7 @@ define Package/$(PKG_NAME)/install
 	cp -pR ./luasrc/* $(1)/usr/lib/lua/luci
 	cp -pR ./root/* $(1)/
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
-	po2lmo ./po/zh-cn/switchtools.po $(1)/usr/lib/lua/luci/i18n/switchtools.zh-cn.lmo
+	po2lmo$(TOPDIR)/feeds/luci/zh-cn/switchtools.po $(1)/usr/lib/lua/luci/i18n/switchtools.zh-cn.lmo
 endef
 
 

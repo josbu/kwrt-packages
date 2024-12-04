@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 PKG_LICENSE:=Apache-2.0
 PKG_NAME:=luci-app-squid-adv
 PKG_VERSION:=2.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 PKG_MAINTAINER:=Douglas Orend <doug.orend2@gmail.com>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -27,7 +27,7 @@ define Package/luci-app-squid-adv/description
 endef
 
 define Package/luci-app-squid-adv/conffiles
-/www/ca/
+/w$(TOPDIR)/feeds/luci/
 /etc/squid/cert/
 endef
 

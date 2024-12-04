@@ -7,7 +7,7 @@ include $(TOPDIR)/rules.mk
 PKG_MAINTAINER:=nosignal <https://github.com/nosignals/neko>
 PKG_NAME:=luci-app-neko
 PKG_VERSION:=1.2.2-beta
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
@@ -50,7 +50,7 @@ define Package/$(PKG_NAME)/preinst
 		cp -rf "/etc/neko/" "/tmp/neko/"
 
 		rm -rf /etc/neko/core/* >/dev/null 2>&1
-		rm -rf /www/nekoclash/ >/dev/null 2>&1
+		rm -rf /www/nekocla$(TOPDIR)/feeds/luci/dev/null 2>&1
 	fi
 	exit 0
 endef
@@ -80,8 +80,8 @@ endef
 
 define Package/$(PKG_NAME)/postrm
 #!/bin/sh
-	rm -rf /etc/neko/ >/dev/null 2>&1
-	rm -rf /www/nekoclash/ >/dev/null 2>&1
+	rm -rf /etc/ne$(TOPDIR)/feeds/luci/dev/null 2>&1
+	rm -rf /www/nekocla$(TOPDIR)/feeds/luci/dev/null 2>&1
 	exit 0
 endef
 

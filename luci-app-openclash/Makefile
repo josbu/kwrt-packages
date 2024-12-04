@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-openclash
 PKG_VERSION:=0.46.050
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 PKG_MAINTAINER:=vernesong <https://github.com/vernesong/OpenClash>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -56,7 +56,7 @@ endef
 define Build/Prepare
 	$(CP) $(CURDIR)/root $(PKG_BUILD_DIR)
 	$(CP) $(CURDIR)/luasrc $(PKG_BUILD_DIR)
-	$(foreach po,$(wildcard ${CURDIR}/po/zh-cn/*.po), \
+	$(foreach po,$(wildcard ${CURDI$(TOPDIR)/feeds/luci/zh-cn/*.po), \
 		po2lmo $(po) $(PKG_BUILD_DIR)/$(patsubst %.po,%.lmo,$(notdir $(po)));)
 	sed -i "s/v0.00.00-beta/v$(PKG_VERSION)-beta/g" $(PKG_BUILD_DIR)/root/www/luci-static/resources/openclash/img/version.svg >/dev/null 2>&1
 	chmod 0755 $(PKG_BUILD_DIR)/root/etc/init.d/openclash
@@ -98,8 +98,8 @@ define Package/$(PKG_NAME)/preinst
 	if [ -f "/etc/config/openclash" ]; then
 		cp -f "/etc/config/openclash" "/tmp/openclash.bak" >/dev/null 2>&1
 		cp -rf "/etc/openclash" "/tmp/openclash" >/dev/null 2>&1
-		cp -rf "/usr/share/openclash/ui/yacd" "/tmp/openclash_yacd" >/dev/null 2>&1
-		cp -rf "/usr/share/openclash/ui/dashboard" "/tmp/openclash_dashboard" >/dev/null 2>&1
+		cp -rf "/usr/share/opencla$(TOPDIR)/feeds/luci/yacd" "/tmp/openclash_yacd" >/dev/null 2>&1
+		cp -rf "/usr/share/opencla$(TOPDIR)/feeds/luci/dashboard" "/tmp/openclash_dashboard" >/dev/null 2>&1
 	fi
 	exit 0
 endef
@@ -116,8 +116,8 @@ define Package/$(PKG_NAME)/prerm
 	uci -q commit openclash
 	cp -f "/etc/config/openclash" "/tmp/openclash.bak" >/dev/null 2>&1
 	cp -rf "/etc/openclash" "/tmp/openclash" >/dev/null 2>&1
-	cp -rf "/usr/share/openclash/ui/yacd" "/tmp/openclash_yacd" >/dev/null 2>&1
-	cp -rf "/usr/share/openclash/ui/dashboard" "/tmp/openclash_dashboard" >/dev/null 2>&1
+	cp -rf "/usr/share/opencla$(TOPDIR)/feeds/luci/yacd" "/tmp/openclash_yacd" >/dev/null 2>&1
+	cp -rf "/usr/share/opencla$(TOPDIR)/feeds/luci/dashboard" "/tmp/openclash_dashboard" >/dev/null 2>&1
 	exit 0
 endef
 

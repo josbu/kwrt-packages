@@ -13,7 +13,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-insomclash
 PKG_VERSION:=1.0.0
-PKG_RELEASE:=24
+PKG_RELEASE:=25
 
 PKG_MAINTAINER:=BobbyUnknown <bobbyun.known88@gmail.com>
 
@@ -69,8 +69,8 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/etc/insomclash/run/proxy
 	$(INSTALL_DIR) $(1)/etc/insomclash/run/rule
 	$(INSTALL_DIR) $(1)/etc/insomclash/run/ui
-	$(INSTALL_DIR) $(1)/etc/insomclash/run/ui/assets
-	$(CP) ./root/etc/insomclash/run/ui/* $(1)/etc/insomclash/run/ui/
+	$(INSTALL_DIR) $(1)/etc/insomclash/r$(TOPDIR)/feeds/luci/assets
+	$(CP) ./root/etc/insomclash/r$(TOPDIR)/feeds/luci/* $(1)/etc/insomclash/run/ui/
 
 	$(INSTALL_DIR) $(1)/usr/share/luci/menu.d
 	$(INSTALL_DATA) ./root/usr/share/luci/menu.d/* $(1)/usr/share/luci/menu.d/
